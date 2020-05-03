@@ -7,13 +7,6 @@ const https = require('https')
 
 const app = express();
 
-try {
-    const keys = require('./keys.js');
-}
-catch {
-    const keys = ""
-}
-
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.static("public"));
@@ -57,7 +50,7 @@ app.post('/', (req, res) => {
     }
 
     const request = https.request(process.env.URL || require('./keys.js').url, options, function (response) {
-        
+
         if (response.statusCode === 200) {
             res.sendFile(__dirname + "/success.html");
         } else {
@@ -75,7 +68,7 @@ app.post('/', (req, res) => {
 
 })
 
-app.post("/failiure", function (req, res) {  
+app.post("/failiure", function (req, res) {
     res.redirect("/")
 })
 
