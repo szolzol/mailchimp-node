@@ -7,7 +7,12 @@ const https = require('https')
 
 const app = express();
 
-const keys = require('./keys.js') || "";
+try {
+    const keys = require('./keys.js');
+}
+catch {
+    const keys = ""
+}
 
 app.set('port', process.env.PORT || 3000);
 
