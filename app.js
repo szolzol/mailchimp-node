@@ -10,7 +10,7 @@ const https = require('https')
 
 const app = express();
 
-app.set('port', process.env.port || 3000);
+app.set('port', process.env.PORT || 3000);
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
