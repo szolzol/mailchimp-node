@@ -53,10 +53,10 @@ app.post('/', (req, res) => {
 
     const options = {
         method: "POST",
-        auth: process.env.AUTH || keys.auth
+        auth: process.env.AUTH || require('./keys.js').auth
     }
 
-    const request = https.request(process.env.URL || keys.url, options, function (response) {
+    const request = https.request(process.env.URL || require('./keys.js').url, options, function (response) {
         
         if (response.statusCode === 200) {
             res.sendFile(__dirname + "/success.html");
